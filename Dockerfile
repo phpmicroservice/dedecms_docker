@@ -5,14 +5,13 @@ RUN a2enmod rewrite
 WORKDIR /tmp;
 RUN apt-get update;apt-get install -y vim wget zip zlib1g-dev
 # 下载dedecms
-RUN wget http://updatenew.dedecms.com/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz;tar -zxvf DedeCMS-V5.7-UTF8-SP2.tar.gz;cd DedeCMS-V5.7-UTF8-SP2;cp -rf uploads/. /var/www/html/;rm -fr *
+RUN wget http://updatenew.dedecms.com/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz;tar -zxvf DedeCMS-V5.7-UTF8-SP2.tar.gz;cd DedeCMS-V5.7-UTF8-SP2;cp -rf uploads/. /var/www/html/;rm -fr *;cd /var/www/html/;chmod 777 *
 
 RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
 # 安装扩展
-RUN docker-php-ext-install pdo pdo_mysql mbstring zip bcmath;docker-php-ext-enable pdo pdo_mysql mbstring zip bcmath;
+RUN docker-php-ext-install pdo pdo_mysql mysqli mbstring zip bcmath;docker-php-ext-enable pdo pdo_mysql mysqli mbstring zip bcmath;
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install gd
-
-
 WORKDIR /var/www/html/;
+
 EXPOSE 80
