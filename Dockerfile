@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:5.6-apache
 MAINTAINER Dongasai <1514582970@qq.com>
 
 RUN a2enmod rewrite
