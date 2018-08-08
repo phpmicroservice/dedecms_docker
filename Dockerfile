@@ -3,7 +3,7 @@ MAINTAINER Dongasai <1514582970@qq.com>
 
 RUN a2enmod rewrite
 WORKDIR /tmp;
-RUN apt-get update;apt-get install -y vi wget zip zlib1g-dev
+RUN apt-get update;apt-get install -y vim wget zip zlib1g-dev
 # 下载dedecms
 RUN wget http://updatenew.dedecms.com/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz;tar -zxvf DedeCMS-V5.7-UTF8-SP2.tar.gz;cd DedeCMS-V5.7-UTF8-SP2;cp -rf uploads/. /var/www/html/;rm -fr *
 
